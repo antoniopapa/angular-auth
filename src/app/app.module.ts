@@ -12,8 +12,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ForgotComponent} from './pages/forgot/forgot.component';
 import {ResetComponent} from './pages/reset/reset.component';
-import {FormComponent} from './pages/login/form/form.component';
-import {AuthenticatorComponent} from './pages/login/authenticator/authenticator.component';
 import {GoogleLoginProvider, SocialLoginModule} from "angularx-social-login";
 
 @NgModule({
@@ -25,8 +23,6 @@ import {GoogleLoginProvider, SocialLoginModule} from "angularx-social-login";
     NavComponent,
     ForgotComponent,
     ResetComponent,
-    FormComponent,
-    AuthenticatorComponent,
   ],
   imports: [
     BrowserModule,
