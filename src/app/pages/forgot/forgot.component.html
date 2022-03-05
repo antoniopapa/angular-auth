@@ -1,0 +1,16 @@
+<main class="form-signin">
+  <div *ngIf="cls" class="alert alert-{{cls}}" role="alert">
+    {{message}}
+  </div>
+
+  <form [formGroup]="form" (submit)="submit()">
+    <h1 class="h3 mb-3 fw-normal">Please insert your password</h1>
+
+    <div class="form-floating">
+      <input formControlName="email" type="email" class="form-control" placeholder="name@example.com">
+      <label>Email address</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Submit</button>
+  </form>
+</main>
