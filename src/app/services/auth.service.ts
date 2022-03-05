@@ -18,15 +18,7 @@ export class AuthService {
   }
 
   login(body: any) {
-    return this.http.post(`${environment.api}/login`, body);
-  }
-
-  authenticatorLogin(body: any) {
-    return this.http.post(`${environment.api}/two-factor`, body, {withCredentials: true});
-  }
-
-  googleLogin(body: any) {
-    return this.http.post(`${environment.api}/google-auth`, body, {withCredentials: true});
+    return this.http.post(`${environment.api}/login`, body, {withCredentials: true});
   }
 
   user() {

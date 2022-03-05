@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import * as qrcode from 'qrcode';
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,21 +9,25 @@ import * as qrcode from 'qrcode';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginData = {
-    id: 0,
-    img: ''
+  form!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+  ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: '',
+      password: '',
+    });
   }
 
-  onLogin(data: any) {
-    this.loginData = data;
-
-    if (data.otpauth_url) {
-      qrcode.toDataURL(data.otpauth_url, (err: any, img: string) => {
-        this.loginData.img = img;
-      })
-    }
+  submit() {
+    this.authService.login(this.form.getRawValue()).subscribe(
+      res => this.router.navigate(['/'])
+    );
   }
 }
